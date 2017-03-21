@@ -1,10 +1,12 @@
+<input type="text" ng-model="nameFilter" placeholder="Search..."/>
+
 <table>
     <thead>
       <tr><th colspan="4">Drivers Championship Standings</th></tr>
     </thead>
     <tbody>
     
-      <tr ng-repeat="driver in driversList track by $index">
+      <tr ng-repeat="driver in driversList | filter: nameFilter">
         <td>{{$index + 1}}</td>
         <td>
           {{driver.Driver.givenName}}&nbsp;{{driver.Driver.familyName}}
