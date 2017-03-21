@@ -9,31 +9,39 @@ angular.module('myApp.view3', ['ngRoute'])
   });
 }])
 
-.controller('View3Ctrl', function($scope) {
+.controller('View3Ctrl', function($scope, ergastAPIservice) {
 
-   $scope.driversList = [
-      {
-          Driver: {
-              givenName: 'Sebastian',
-              familyName: 'Vettel'
-          },
-          points: 322,
-          nationality: "German",
-          Constructors: [
-              {name: "Red Bull"}
-          ]
-      },
-      {
-          Driver: {
-          givenName: 'Fernando',
-              familyName: 'Alonso'
-          },
-          points: 207,
-          nationality: "Spanish",
-          Constructors: [
-              {name: "Ferrari"}
-          ]
-      }
-    ];
+  $scope.nameFilter = null;
+    $scope.driversList = [];
+
+    ergastAPIservice.getDrivers().success(function (response) {
+        //Dig into the responde to get the relevant data
+        $scope.driversList = response.MRData.StandingsTable.StandingsLists[0].DriverStandings;
+    });
+
+   // $scope.driversList = [
+   //    {
+   //        Driver: {
+   //            givenName: 'Sebastian',
+   //            familyName: 'Vettel'
+   //        },
+   //        points: 322,
+   //        nationality: "German",
+   //        Constructors: [
+   //            {name: "Red Bull"}
+   //        ]
+   //    },
+   //    {
+   //        Driver: {
+   //        givenName: 'Fernando',
+   //            familyName: 'Alonso'
+   //        },
+   //        points: 207,
+   //        nationality: "Spanish",
+   //        Constructors: [
+   //            {name: "Ferrari"}
+   //        ]
+   //    }
+   //  ];
 
 });
