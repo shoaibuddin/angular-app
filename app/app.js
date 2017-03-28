@@ -7,7 +7,8 @@ angular.module('myApp', [
   'myApp.view2',
   'myApp.view3',
   'myApp.view3_service',
-  'myApp.version'
+  'myApp.version',
+  'ng-fusioncharts'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
